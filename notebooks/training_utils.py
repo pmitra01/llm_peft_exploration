@@ -13,6 +13,8 @@ def chunk(indices, chunk_size=-1):
         chunk_size = len(indices)
     return torch.split(torch.tensor(indices), chunk_size)
 
+
+# Inspiration from https://www.scottcondron.com/jupyter/visualisation/audio/2020/12/02/dataloaders-samplers-collate.html#Samplers
 class SequentialTrainingBatchSampler(Sampler):
     def __init__(self, dataset, batch_size, shuffle=False, base=10):
         max_segments = int(math.log(len(dataset), base))
